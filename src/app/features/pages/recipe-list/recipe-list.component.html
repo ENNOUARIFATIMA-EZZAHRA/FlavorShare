@@ -1,9 +1,32 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
-  <div *ngFor="let recipe of recipes" class="border rounded shadow hover:shadow-lg transition">
-    <img [src]="recipe.image || 'https://via.placeholder.com/300'" alt="{{ recipe.title }}" class="w-full h-40 object-cover rounded-t">
-    <div class="p-4">
-      <h3 class="text-xl font-semibold mb-1">{{ recipe.title }}</h3>
-      <p class="text-sm text-gray-600">Chef: {{ recipe.chef || 'Inconnu' }}</p>
-    </div>
+<div class="filters bg-white shadow-md rounded-lg p-6 mb-6 max-w-md mx-auto">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Filtrer les recettes</h2>
+
+  <!-- Filtrer par catégorie -->
+  <div class="mb-4">
+    <label for="category" class="block text-gray-700 text-sm font-medium">Type de recette :</label>
+    <select id="category" [(ngModel)]="filterType" (change)="filterRecipes()" class="w-full mt-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <option value="">Toutes</option>
+      <option value="Vegetarian">Végétarien</option>
+      <option value="Dessert">Dessert</option>
+      <option value="Chicken">Poulet</option>
+      <option value="Beef">Boeuf</option>
+      <option value="Seafood">Fruits de mer</option>
+    </select>
+  </div>
+
+  <!-- Filtrer par ingrédient principal -->
+  <div class="mb-4">
+    <label for="ingredient" class="block text-gray-700 text-sm font-medium">Ingrédient principal :</label>
+    <input id="ingredient" [(ngModel)]="filterIngredient" (input)="filterRecipes()" placeholder="Exemple: Chicken" class="w-full mt-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  </div>
+</div>
+
+<!-- Affichage des recettes filtrées sous forme de grille -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+  <div *ngFor="let recipe of filteredList" (click)="goToDetails(recipe)" class="recipe-item cursor-pointer bg-white p-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+    <img [src]="recipe.strMealThumb" alt="Image de {{ recipe.strMeal }}" class="w-full h-48 object-cover rounded-md mb-4">
+    <h3 class="text-lg font-semibold text-gray-800">{{ recipe.strMeal }}</h3>
+    <p class="text-gray-600"><strong>Chef :</strong> {{ recipe.strArea }}</p>
+    <p class="text-gray-600"><strong>Catégorie :</strong> {{ recipe.strCategory }}</p>
   </div>
 </div>

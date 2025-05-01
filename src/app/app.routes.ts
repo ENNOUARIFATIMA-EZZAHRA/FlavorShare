@@ -9,11 +9,7 @@ import { ContactComponent } from './features/pages/contact/contact.component';
 import { FooterComponent } from './features/pages/footer/footer.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'   
-},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'recipe-list', component: RecipeListComponent },
@@ -21,5 +17,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistreComponent },
   { path: 'footer', component: FooterComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent }
 ];
