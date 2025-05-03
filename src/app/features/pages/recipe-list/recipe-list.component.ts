@@ -25,14 +25,29 @@ export class RecipeListComponent implements OnInit {
       this.filteredList = this.recipeList;
     });
   }
+filterRecipes(): void {
+  // Étape 1: filtrer selon la catégorie
+  let filtered = this.filterByCategory(this.recipeList);
 
-  filterRecipes(): void {
-    this.filteredList = this.recipeList.filter((recipe: any) => {
-      const matchesCategory = this.filterType ? recipe.strCategory === this.filterType : true;
-      const matchesIngredient = this.filterIngredient ? recipe.strMeal.toLowerCase().includes(this.filterIngredient.toLowerCase()) : true;
-      return matchesCategory && matchesIngredient;
-    });
-  }
+  // Étape 2: filtrer selon l'ingrédient principal
+  filtered = this.filterByIngredient(filtered);
+
+  // Résultat final
+  this.filteredList = filtered;
+}
+
+private filterByCategory(list: any[]): any[] {
+  if (!this.filterType) return list;
+  return list.filter(recipe => recipe.strCategory === this.filterType);
+}
+
+private filterByIngredient(list: any[]): any[] {
+  if (!this.filterIngredient) return list;
+  return list.filter(recipe =>
+    recipe.strMeal.toLowerCase().includes(this.filterIngredient.toLowerCase())
+  );
+}
+
 
   goToDetails(recipe: any): void {
     window.location.href = `/details/${recipe.idMeal}`;

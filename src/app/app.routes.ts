@@ -7,7 +7,7 @@ import { RegistreComponent } from './features/Auth/registre/registre.component';
 import { NavbarComponent } from './features/pages/navbar/navbar.component';
 import { ContactComponent } from './features/pages/contact/contact.component';
 import { FooterComponent } from './features/pages/footer/footer.component';
-
+import { RatingComponent } from './features/pages/rating-system/rating-system.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -17,5 +17,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistreComponent },
   { path: 'footer', component: FooterComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: 'rating-system', component: RatingComponent }
 ];

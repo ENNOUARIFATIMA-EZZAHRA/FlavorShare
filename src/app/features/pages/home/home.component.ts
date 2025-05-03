@@ -8,6 +8,6 @@ import { FooterComponent } from '../footer/footer.component';
   standalone: true,              
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule],  // ⬅️ ضروري
+  imports: [CommonModule], 
 })
 export class HomeComponent {}

@@ -4,10 +4,7 @@
 
   <!-- Image + Infos principales -->
   <div class="flex flex-col md:flex-row gap-6">
-    <!-- Image -->
     <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" class="w-full md:w-1/2 h-72 object-cover rounded-xl shadow-sm" />
-
-    <!-- Détails -->
     <div class="flex-1 space-y-4">
       <p class="text-lg"><span class="font-semibold text-gray-600">Catégorie :</span> {{ recipe.strCategory }}</p>
       <p class="text-lg"><span class="font-semibold text-gray-600">Origine :</span> {{ recipe.strArea }}</p>
@@ -18,9 +15,25 @@
     </div>
   </div>
 
-  <!-- Instructions -->
-  <div class="mt-8">
-    <h3 class="text-2xl font-bold text-gray-700 mb-4">📝 Instructions</h3>
-    <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ recipe.strInstructions }}</p>
+  <!-- Étapes -->
+  <div class="mt-10">
+    <h3 class="text-2xl font-bold text-gray-700 mb-6">📝 Étapes de préparation</h3>
+    <div class="grid gap-6">
+      <div *ngFor="let step of splitInstructions(recipe.strInstructions); let i = index"
+           class="flex items-start gap-4 p-5 bg-gray-100 rounded-xl shadow-sm">
+        <div class="w-10 h-10 flex items-center justify-center text-white font-bold text-lg rounded-full bg-gray-800 shrink-0">
+          {{ i + 1 }}
+        </div>
+        <p class="text-gray-700 leading-relaxed">{{ step }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton retour -->
+  <div class="mt-8 text-center">
+    <button (click)="goBack()" class="px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-700 transition-all duration-300">
+      🔙 Retour
+    </button>
   </div>
 </div>
+<app-rating></app-rating>
