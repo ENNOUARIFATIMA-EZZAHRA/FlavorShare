@@ -1,10 +1,26 @@
-<div *ngIf="recipe">
-    <h2>{{ recipe.name }}</h2>
-    <p><strong>Chef:</strong> {{ recipe.author }}</p>
-    <p><strong>نوع:</strong> {{ recipe.cuisine }}</p>
-    <h4>المكونات:</h4>
-    <ul>
-      <li *ngFor="let ing of recipe.ingredients">{{ ing }}</li>
-    </ul>
+<div *ngIf="recipe" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 mt-8">
+  <!-- Titre -->
+  <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center">{{ recipe.strMeal }}</h2>
+
+  <!-- Image + Infos principales -->
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- Image -->
+    <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" class="w-full md:w-1/2 h-72 object-cover rounded-xl shadow-sm" />
+
+    <!-- Détails -->
+    <div class="flex-1 space-y-4">
+      <p class="text-lg"><span class="font-semibold text-gray-600">Catégorie :</span> {{ recipe.strCategory }}</p>
+      <p class="text-lg"><span class="font-semibold text-gray-600">Origine :</span> {{ recipe.strArea }}</p>
+      <p class="text-lg"><span class="font-semibold text-gray-600">Tags :</span> {{ recipe.strTags || 'Non spécifié' }}</p>
+      <a [href]="recipe.strYoutube" target="_blank" class="inline-block mt-2 text-blue-600 hover:underline">
+        🎥 Voir sur YouTube
+      </a>
+    </div>
   </div>
-  
+
+  <!-- Instructions -->
+  <div class="mt-8">
+    <h3 class="text-2xl font-bold text-gray-700 mb-4">📝 Instructions</h3>
+    <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ recipe.strInstructions }}</p>
+  </div>
+</div>

@@ -1,10 +1,9 @@
 <div class="filters bg-white shadow-md rounded-lg p-6 mb-6 max-w-md mx-auto">
   <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Filtrer les recettes</h2>
 
-  <!-- Filtrer par catégorie -->
   <div class="mb-4">
-    <label for="category" class="block text-gray-700 text-sm font-medium">Type de recette :</label>
-    <select id="category" [(ngModel)]="filterType" (change)="filterRecipes()" class="w-full mt-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+    <label class="block text-sm text-gray-700 font-medium">Type de recette :</label>
+    <select [(ngModel)]="filterType" (change)="filterRecipes()" class="w-full p-2 mt-1 border rounded-md">
       <option value="">Toutes</option>
       <option value="Vegetarian">Végétarien</option>
       <option value="Dessert">Dessert</option>
@@ -14,19 +13,23 @@
     </select>
   </div>
 
-  <!-- Filtrer par ingrédient principal -->
-  <div class="mb-4">
-    <label for="ingredient" class="block text-gray-700 text-sm font-medium">Ingrédient principal :</label>
-    <input id="ingredient" [(ngModel)]="filterIngredient" (input)="filterRecipes()" placeholder="Exemple: Chicken" class="w-full mt-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  <div>
+    <label class="block text-sm text-gray-700 font-medium">Ingrédient principal :</label>
+    <input [(ngModel)]="filterIngredient" (input)="filterRecipes()" placeholder="Ex: Chicken" class="w-full p-2 mt-1 border rounded-md" />
   </div>
 </div>
 
-<!-- Affichage des recettes filtrées sous forme de grille -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
-  <div *ngFor="let recipe of filteredList" (click)="goToDetails(recipe)" class="recipe-item cursor-pointer bg-white p-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
-    <img [src]="recipe.strMealThumb" alt="Image de {{ recipe.strMeal }}" class="w-full h-48 object-cover rounded-md mb-4">
-    <h3 class="text-lg font-semibold text-gray-800">{{ recipe.strMeal }}</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
+  <div *ngFor="let recipe of filteredList" class="cursor-pointer bg-white p-4 rounded-lg shadow hover:shadow-lg transition" (click)="goToDetails(recipe)">
+    <img [src]="recipe.strMealThumb" class="w-full h-48 object-cover rounded mb-3" alt="{{ recipe.strMeal }}" />
+    <h3 class="text-lg font-bold text-gray-800">{{ recipe.strMeal }}</h3>
     <p class="text-gray-600"><strong>Chef :</strong> {{ recipe.strArea }}</p>
     <p class="text-gray-600"><strong>Catégorie :</strong> {{ recipe.strCategory }}</p>
+    <a class="mt-2 text-indigo-600 hover:underline inline-flex items-center">
+      View More
+      <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </svg>
+    </a>
   </div>
 </div>

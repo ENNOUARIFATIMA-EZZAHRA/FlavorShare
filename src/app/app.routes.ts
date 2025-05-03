@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'recipe-list', component: RecipeListComponent },
-  { path: 'recipe-detail', component: RecipeDetailsComponent },
+  { path: 'details/:id', component: RecipeDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistreComponent },
   { path: 'footer', component: FooterComponent },
