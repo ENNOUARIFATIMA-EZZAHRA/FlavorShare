@@ -1,8 +1,11 @@
-<section class="px-8 py-12 bg-gray-50">
-  <h2 class="text-2xl font-semibold text-orange-400 mb-10 flex justify-center">Contact us</h2>
+<section class="px-4 md:px-8 py-12 bg-gray-50">
+  <h2 class="text-2xl font-semibold text-orange-400 mb-10 text-center">Contact us</h2>
 
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-4 max-w-xl ml-80">
-
+  <form
+    [formGroup]="contactForm"
+    (ngSubmit)="onSubmit()"
+    class="space-y-4 max-w-xl mx-auto"
+  >
     <!-- Name -->
     <input
       type="text"
@@ -10,7 +13,10 @@
       placeholder="Your Name"
       class="w-full border p-2 rounded"
     />
-    <div *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].invalid" class="text-red-500">
+    <div
+      *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].invalid"
+      class="text-red-500"
+    >
       Name is required.
     </div>
 
@@ -21,7 +27,10 @@
       placeholder="Your Email"
       class="w-full border p-2 rounded"
     />
-    <div *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid" class="text-red-500">
+    <div
+      *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid"
+      class="text-red-500"
+    >
       <div *ngIf="contactForm.controls['email'].errors?.['required']">Email is required.</div>
       <div *ngIf="contactForm.controls['email'].errors?.['email']">Email is invalid.</div>
     </div>
@@ -32,18 +41,27 @@
       placeholder="Your Message"
       class="w-full border p-2 rounded h-32"
     ></textarea>
-    <div *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].invalid" class="text-red-500">
+    <div
+      *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].invalid"
+      class="text-red-500"
+    >
       <div *ngIf="contactForm.controls['message'].errors?.['required']">Message is required.</div>
       <div *ngIf="contactForm.controls['message'].errors?.['minlength']">Message must be at least 10 characters.</div>
     </div>
 
     <!-- Submit button -->
-    <button type="submit" class="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-500 ml-56 mb-20">
-      Send Message
-    </button>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="bg-yellow-400 px-6 py-2 rounded hover:bg-yellow-500"
+      >
+        Send Message
+      </button>
+    </div>
   </form>
 
-  <div class="flex justify-center space-x-6 mt-10 ml-9">
+  <!-- Social Media Icons -->
+  <div class="flex justify-center space-x-6 mt-10">
     <a href="#"><img src="/./facebook.png" alt="Facebook" class="w-10 h-9" /></a>
     <a href="#"><img src="/./instagram.png" alt="Instagram" class="w-10 h-9" /></a>
     <a href="#"><img src="/./twitter.png" alt="Twitter" class="w-10 h-9" /></a>

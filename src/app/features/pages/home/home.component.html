@@ -1,19 +1,26 @@
 <section class="relative mt-4">
-  <div class="relative flex flex-col md:flex-row items-center md:items-start">
-    <!-- Image -->
+  <div class="relative flex flex-col md:flex-row items-center md:items-start gap-4">
+    <!-- Image صغيرة فـ desktop -->
     <img
       src="/./recettes-francaises.jpg"
       alt="Hero"
-      class="w-full h-48 md:h-80 object-cover rounded-md"
+      class="w-full md:w-2/4 ml-12  md:h-68 object-cover rounded-md shadow"
     />
 
-    <!-- Texte par-dessus الصورة -->
+    <!-- Texte avec bouton -->
     <div
-      class="absolute top-4 left-4 right-4 md:static bg-yellow-100 p-4 md:p-6 max-w-full md:max-w-sm shadow-md rounded-md"
+      class="absolute top-4 mt-20  left-11 right-4 md:static bg-yellow-100 p-4 md:p-6 max-w-full md:max-w-md shadow-md rounded-md"
     >
-      <p class="text-gray-700 text-sm md:text-base">
+      <p class="text-gray-700 text-sm md:text-base mb-4">
         Découvrez nos meilleures recettes de pains sucrés, parfaits pour le déjeuner, la collation ou un dessert léger !
       </p>
+
+      <a
+        routerLink="/recipe-list"
+        class="ml-36 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base font-semibold px-4 py-2 rounded transition duration-200"
+      >
+        Voir les recettes
+      </a>
     </div>
   </div>
 </section>
