@@ -9,21 +9,28 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./rating-system.component.css']
 })
 export class RatingComponent {
+  // Array of possible rating values (1 to 5 stars)
   ratings = [1, 2, 3, 4, 5];
-  selectedRating: number = 0;
-  ratingSubmitted: boolean = false; // باش نعرف واش المستخدم صيفط التقييم
 
+  // Variable to store the selected rating
+  selectedRating: number = 0;
+
+  // Flag to check if the rating has been submitted
+  ratingSubmitted: boolean = false;
+
+  // Method to handle star click
   setRating(rating: number): void {
     this.selectedRating = rating;
-    this.ratingSubmitted = false; // كنرجعو false فحال بغا يبدل التقييم
+    this.ratingSubmitted = false; // Reset if user changes rating
   }
 
+  // Method to submit the rating
   submitRating(): void {
     if (this.selectedRating > 0) {
-      console.log("تم إرسال التقييم:", this.selectedRating);
+      console.log("Rating submitted:", this.selectedRating);
       this.ratingSubmitted = true;
     } else {
-      alert("المرجو اختيار عدد النجوم قبل الإرسال.");
+      alert("Please select a rating before submitting.");
     }
   }
 }

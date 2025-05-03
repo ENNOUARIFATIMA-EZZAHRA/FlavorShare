@@ -1,20 +1,19 @@
-<div class="rating-container">
-  <h3 class="text-xl font-semibold">Évaluez cette recette</h3>
+<div class="rating-box">
+    <div>
+      <span 
+        *ngFor="let star of ratings"
+        [ngClass]="{ 'selected': selectedRating >= star }"
+        (click)="setRating(star)">
+        ★
+      </span>
+    </div>
   
-  <!-- Note -->
-  <div>
-    <label for="rating">Note :</label>
-    <input type="number" [(ngModel)]="rating" id="rating" min="1" max="5" />
+    <!-- Submit button -->
+    <button class="submit-button" (click)="submitRating()">Submit Rating</button>
+  
+    <!-- Confirmation message after submission -->
+    <p *ngIf="ratingSubmitted" class="confirmation">
+      ✅ Thank you! Your rating of {{ selectedRating }} star(s) has been submitted.
+    </p>
   </div>
   
-  <!-- Commentaire -->
-  <div>
-    <label for="comment">Commentaire :</label>
-    <textarea [(ngModel)]="comment" id="comment" placeholder="Ajoutez un commentaire..."></textarea>
-  </div>
-  
-  <!-- Bouton de soumission -->
-  <button (click)="submitRating()" class="bg-blue-500 text-white p-2 rounded">
-    Soumettre
-  </button>
-</div>
